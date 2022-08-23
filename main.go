@@ -5,9 +5,10 @@ import (
 )
 
 func main() {
-	slice := []int{1,2,2,2,3,4,5,5}
+	slice := []int{1,2,0,1,3,2,2,3,4,5,5}
 	result := structures.CreateListNode(slice)
-	structures.DeleteDublicates(&result,nil)
+	mapList := make(map[int]*structures.ListNode)
+	structures.DeleteDublicates(&result,mapList)
 	structures.DoubleList(result)
 
 }

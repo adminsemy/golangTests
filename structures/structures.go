@@ -27,16 +27,17 @@ func DoubleList (l ListNode) {
 	DoubleList(*l.Next)
 }
 
-func DeleteDublicates(l, parent *ListNode) {
+func DeleteDublicates(l *ListNode, mapList map[int]*ListNode) {
 	if l.Next ==  nil {
 		return
 	}
-	if parent == nil {
-		DeleteDublicates(l.Next, l)
-		return
+	parentPtr, ok := mapList[l.Val]
+	if !ok {
+		mapList[l.Val] = l
+		parentPtr = l
+	} else {
+		parentPtr.Next = l.Next
 	}
-	if l.Val == parent.Val {
-		parent.Next = l.Next
-	}
-	DeleteDublicates(l.Next, l)
+	DeleteDublicates(l.Next, mapList)
 }
+
