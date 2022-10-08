@@ -1,7 +1,14 @@
 package main
 
-import jointwoslice "github.com/adminsemy/golangTests/joinTwoSlice"
+import "fmt"
 
 func main() {
-	jointwoslice.Join()
+	async := make(map[string]string)
+	async["one"] = "one"
+	for i := 0; i <= 100; i++ {
+		go func() {
+			res := async["one"]
+			fmt.Println(res, i)
+		}()
+	}
 }

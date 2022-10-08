@@ -24,6 +24,8 @@ func NewAsyncMap() CasheMap {
 }
 
 func (a *asyncMap) Read(key string) (string, error) {
+	a.mux.Lock()
+	defer a.mux.Unlock()
 	res, ok := a.asyncMap[key]
 	if ok {
 		return res, nil
@@ -33,18 +35,14 @@ func (a *asyncMap) Read(key string) (string, error) {
 
 func (a *asyncMap) Write(key, data string) error {
 	a.mux.Lock()
+	defer a.mux.Unlock()
 	a.asyncMap[key] = data
-	a.mux.Unlock()
 	return nil
 }
 
 func (a *asyncMap) Delete(key string) error {
 	a.mux.Lock()
 	defer a.mux.Unlock()
-	_, ok := a.asyncMap[key]
-	if ok {
-		delete(a.asyncMap, key)
-		return nil
-	}
-	return errors.New("delete error - key not found")
+	delete(a.asyncMap, key)
+	return nil
 }
