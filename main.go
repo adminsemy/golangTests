@@ -1,14 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"github.com/adminsemy/golangTests/hanoi"
+)
 
 func main() {
-	async := make(map[string]string)
-	async["one"] = "one"
-	for i := 0; i <= 100; i++ {
-		go func() {
-			res := async["one"]
-			fmt.Println(res, i)
-		}()
-	}
+	hanoi.Hanoi(2, 1, 2)
 }
