@@ -11,7 +11,7 @@ import (
 
 func emulateLoad(t *testing.T, c testAsyncMap.CasheMap) {
 	wg := &sync.WaitGroup{}
-	for i := 0; i <= 10_000; i++ {
+	for i := 0; i <= 1_0; i++ {
 		key := fmt.Sprintf("#%v-key", i)
 		value := fmt.Sprintf("#%v-value", i)
 		wg.Add(1)
@@ -21,14 +21,16 @@ func emulateLoad(t *testing.T, c testAsyncMap.CasheMap) {
 			wg.Done()
 		}(key, value)
 
-		wg.Add(1)
-		go func(k, v string) {
-			val, err := c.Read(k)
-			if err == nil {
-				assert.Equal(t, v, val)
-			}
-			wg.Done()
-		}(key, value)
+		for y := 0; y <= 10_00; y++ {
+			wg.Add(1)
+			go func(k, v string) {
+				val, err := c.Read(k)
+				if err == nil {
+					assert.Equal(t, v, val)
+				}
+				wg.Done()
+			}(key, value)
+		}
 
 		wg.Add(1)
 		go func(k string) {
