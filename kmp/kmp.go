@@ -18,7 +18,7 @@ func CreatePi(str string) {
 
 	for i, symbol := range strRune {
 		pi[i] = 0
-		fmt.Println(i, symbol)
+		fmt.Println(pi)
 		if i == 0 {
 			prefics = symbol
 			continue
@@ -35,7 +35,7 @@ func CreatePi(str string) {
 		}
 
 		if suffics == prefics {
-			pi[suffics] = iPrefics + 1
+			pi[i] = iPrefics + 1
 			iPrefics++
 		}
 		prefics = strRune[pi[iPrefics]]
