@@ -1,9 +1,11 @@
 package main
 
 import (
-	"github.com/adminsemy/golangTests/hanoi"
+	"fmt"
+
+	"github.com/adminsemy/golangTests/bankomat"
 )
 
 func main() {
-	hanoi.Hanoi(2, 1, 2)
+	fmt.Println(bankomat.GiveMeMoney(13, []int32{1, 4, 6}))
 }
