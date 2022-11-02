@@ -1,11 +1,9 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/adminsemy/golangTests/bankomat"
+	"github.com/adminsemy/golangTests/kmp"
 )
 
 func main() {
-	fmt.Println(bankomat.GiveMeMoney(13, []int32{1, 4, 6}))
+	kmp.CreatePi("Привет")
 }
