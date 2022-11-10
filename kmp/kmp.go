@@ -9,36 +9,24 @@ import "fmt"
 var pi []int
 
 func CreatePi(str string) {
-	var prefics, suffics rune
-	var iPrefics int
+	var i, iPrefics int
 
 	strRune := []rune(str)
 
 	pi = make([]int, len(strRune))
 
-	for i, symbol := range strRune {
-		pi[i] = 0
-		fmt.Println(pi)
-		if i == 0 {
-			prefics = symbol
-			continue
-		}
-		suffics = symbol
-
-		if suffics != prefics {
-			if iPrefics == 0 {
-				pi[i] = 0
-			} else {
-				iPrefics = pi[iPrefics-1]
-				prefics = strRune[pi[iPrefics]]
-			}
-		}
-
-		if suffics == prefics {
+	i = 1
+	for range strRune {
+		if strRune[i] == strRune[iPrefics] {
 			pi[i] = iPrefics + 1
 			iPrefics++
+			i++
+		} else if iPrefics == 0 {
+			pi[i] = 0
+			i++
+		} else {
+			iPrefics = pi[iPrefics-1]
 		}
-		prefics = strRune[pi[iPrefics]]
 	}
 	fmt.Println(pi)
 }
