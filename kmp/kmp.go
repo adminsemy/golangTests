@@ -4,7 +4,9 @@
 
 package kmp
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var pi []int
 
@@ -16,17 +18,22 @@ func CreatePi(str string) {
 	pi = make([]int, len(strRune))
 
 	i = 1
-	for range strRune {
-		if strRune[i] == strRune[iPrefics] {
+	for {
+		if i == len(strRune) {
+			break
+		}
+		switch {
+		case strRune[i] == strRune[iPrefics]:
 			pi[i] = iPrefics + 1
 			iPrefics++
 			i++
-		} else if iPrefics == 0 {
+		case iPrefics == 0:
 			pi[i] = 0
 			i++
-		} else {
+		default:
 			iPrefics = pi[iPrefics-1]
 		}
+
 	}
 	fmt.Println(pi)
 }
