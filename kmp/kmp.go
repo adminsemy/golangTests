@@ -10,7 +10,7 @@ import (
 
 var pi []int
 
-func CreatePi(str string) {
+func CreatePi(str string) []int {
 	var i, iPrefics int
 	strRune := []rune(str)
 	pi = make([]int, len(strRune))
@@ -33,4 +33,5 @@ func CreatePi(str string) {
 
 	}
 	fmt.Println(pi)
+	return pi
 }

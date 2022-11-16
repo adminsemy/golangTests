@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	kmp.CreatePi("abbaabbab")
+	kmp.CreatePi("abcabd")
 }
