@@ -1,9 +1,12 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/adminsemy/golangTests/kmp"
 )
 
 func main() {
-	kmp.CreatePi("abcabd")
+	res := kmp.FindRepeateds("abc", "abcabeabcacabcabd")
+	fmt.Println(res)
 }
