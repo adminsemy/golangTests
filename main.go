@@ -1,12 +1,11 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/adminsemy/golangTests/kmp"
-)
-
 func main() {
-	res := kmp.FindRepeateds("abc", "abcabeabcacabcabd")
-	fmt.Println(res)
+	count := 0
+	for i := range [256]struct{}{} {
+		n := uint8(i)
+		println("n", n)
+		println("-n", -n)
+	}
+	println(count)
 }
